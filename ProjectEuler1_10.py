@@ -156,7 +156,7 @@ def number9():
             if (c**2 == a**2 + b**2) & (a+b+c == n):
                 z = a*b*c
                 big.append(z)
-    return big
+    return big[0]
 
 ### #10 Summation of primes ###
 
