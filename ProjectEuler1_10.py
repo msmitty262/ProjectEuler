@@ -171,7 +171,5 @@ def number10():
     for i in range(a,n):
         if all(i % prime != 0 for prime in primes2):
             primes.append(i)
-        if i % 100000 == 0:
-            print(i)
     sum1 = sum(primes)
     return sum1
