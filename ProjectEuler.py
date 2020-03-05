@@ -480,4 +480,4 @@ def number111():
         b = sum(a)
         c += b
         
-    return c
+    return int(c)
