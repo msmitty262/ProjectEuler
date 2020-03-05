@@ -458,7 +458,7 @@ def get_prime_factors(n):
             primes.append(i)
     return primes
 
-def number111v2():
+def number111():
     digits = 10
     num = 10 ** digits
     primes = get_prime_factors(num)
