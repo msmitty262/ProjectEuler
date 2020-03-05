@@ -417,3 +417,67 @@ def number100():
     result = blue[-1]
     return result
 
+### #111 Primes with runs
+
+def get_numbers(num, size, runs):
+    a = np.ones(size) * num
+    m = []
+    if runs == 1:
+        for b in range(size):
+            for c in range(10):
+                d = a.copy()
+                d[b] = c
+                if c != num:
+                    e = 0
+                    for i in range(size):
+                        f = d[i] * 10 ** (size - i)
+                        e +=f
+                    m.append(e // 10)
+    if runs == 2:
+        for b in range(size - 1):
+            for c in range(10):
+                for g in range(b + 1, size):
+                    for h in range(10):
+                        d = a.copy()
+                        d[b] = c
+                        d[g] = h
+                        if c != num and h != num:
+                            e = 0
+                            for i in range(size):
+                                f = d[i] * 10 ** (size - i)
+                                e +=f
+                            m.append(e // 10)
+    
+    return m
+
+def get_prime_factors(n):
+    primes = [2]
+    a = int(np.sqrt(n)) + 1
+    for i in range(2, a):
+        if all(i % prime != 0 for prime in primes):
+            primes.append(i)
+    return primes
+
+def number111v2():
+    digits = 10
+    num = 10 ** digits
+    primes = get_prime_factors(num)
+    c = 0
+    for i in range(10):
+        numbers = get_numbers(i, digits, 1)
+        a = []
+        for number in numbers:
+            if all(number % prime != 0 for prime in primes):
+                if number > num // 10:
+                    a.append(number)
+        if len(a) == 0:
+            numbers = get_numbers(i, digits, 2)
+            a = []
+            for number in numbers:
+                if all(number % prime != 0 for prime in primes):
+                    if number > num // 10:
+                        a.append(number)
+        b = sum(a)
+        c += b
+        
+    return c
